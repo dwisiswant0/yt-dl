@@ -19,7 +19,7 @@ class yt_dl(object):
 		file = open(name, 'wb')
 		meta = get.info()
 		size = int(meta.getheaders("Content-Length")[0])
-		print "%s[+] Downloading: %s Bytes: %s%s" % (bcolors.OKGREEN, name, size, bcolors.ENDC)
+		print("%s[+] Downloading: %s Bytes: %s%s" % (bcolors.OKGREEN, name, size, bcolors.ENDC))
 		size_dl = 0
 		block_sz = 8192
 
@@ -30,5 +30,5 @@ class yt_dl(object):
 			file.write(buffer)
 			status = r"%10d [%3.2f%%]" % (size_dl, size_dl * 100. / size)
 			status = status + chr(8)*(len(status)+1)
-			print status,
+			print(status)
 		file.close()

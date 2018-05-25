@@ -7,9 +7,9 @@ import sys
 import urllib2
 import urlparse
 
-print bcolors.HEADER
+print(bcolors.HEADER)
 config()
-print bcolors.ENDC
+print(bcolors.ENDC)
 
 url = str(raw_input(bcolors.BOLD + "YouTube URL> " + bcolors.ENDC))
 if (re.search("youtube.com", url) is not None):
@@ -19,8 +19,8 @@ if (re.search("youtube.com", url) is not None):
 		fetch = yt_dl.fetch()
 
 		if fetch['status'] == True:
-			print bcolors.OKBLUE + "Title: " + fetch['title']
-			print "Uploaded by: " + fetch['by'] + bcolors.ENDC + "\n"
+			print(bcolors.OKBLUE + "Title: " + fetch['title'])
+			print("Uploaded by: " + fetch['by'] + bcolors.ENDC + "\n")
 			count = 1
 			item = []
 			for video in fetch['videos']:
@@ -31,12 +31,12 @@ if (re.search("youtube.com", url) is not None):
 			try:
 				choose = int(raw_input(bcolors.BOLD + "Choose one> " + bcolors.ENDC))
 			except ValueError:
-				print bcolors.FAIL + "[!] Error: Your selection is not available!" + bcolors.ENDC
+				print(bcolors.FAIL + "[!] Error: Your selection is not available!" + bcolors.ENDC)
 				sys.exit()
 			try:
 				item[int(choose-1)]
 			except IndexError:
-				print bcolors.FAIL + "[!] Error: Your selection is not available!" + bcolors.ENDC
+				print(bcolors.FAIL + "[!] Error: Your selection is not available!" + bcolors.ENDC)
 				sys.exit()
 			file_name = re.sub("[^a-zA-Z0-9\n\.]", "_", fetch['title'])
 			file_name = file_name.replace("__", "_")
@@ -46,10 +46,10 @@ if (re.search("youtube.com", url) is not None):
 			try:
 				yt_dl.download(download, dl_name + "." + item[int(choose-1)]['mime'].replace("video/", ""))
 			except urllib2.HTTPError as err:
-				print bcolors.FAIL + "[!] Error: " + err.msg + "! Try another video." + bcolors.ENDC
+				print(bcolors.FAIL + "[!] Error: " + err.msg + "! Try another video." + bcolors.ENDC)
 		else:
-			print bcolors.FAIL + "[!] Error: " + fetch['error'] + bcolors.ENDC
+			print(bcolors.FAIL + "[!] Error: " + fetch['error'] + bcolors.ENDC)
 	except KeyError:
-		print bcolors.FAIL + "[!] Error: Invalid YouTube URL!" + bcolors.ENDC	
+		print(bcolors.FAIL + "[!] Error: Invalid YouTube URL!" + bcolors.ENDC)
 else:
-	print bcolors.FAIL + "[!] Error: Invalid YouTube URL!" + bcolors.ENDC
+	print(bcolors.FAIL + "[!] Error: Invalid YouTube URL!" + bcolors.ENDC)
