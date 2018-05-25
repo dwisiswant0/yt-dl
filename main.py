@@ -42,8 +42,8 @@ if (re.search("youtube.com", url) is not None):
 			file_name = file_name.replace("__", "_")
 			new_name = str(raw_input(bcolors.BOLD + "File name (" + file_name + ")?> " + bcolors.ENDC))
 			dl_name = file_name if new_name == "" else new_name
-			download = urllib2.urlopen(item[int(choose-1)]['url'])
 			try:
+				download = urllib2.urlopen(item[int(choose-1)]['url'])
 				yt_dl.download(download, dl_name + "." + item[int(choose-1)]['mime'].replace("video/", ""))
 			except urllib2.HTTPError as err:
 				print(bcolors.FAIL + "[!] Error: " + err.msg + "! Try another video." + bcolors.ENDC)
