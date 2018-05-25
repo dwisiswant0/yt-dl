@@ -1,0 +1,7 @@
+/*.mp4
+/*.webm
+/*.3gpp
+/classes/__init__.py
+/classes/config.py
+/classes/yt_dl.pyc
+/classes/bcolors.pyc
